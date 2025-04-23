@@ -1,0 +1,137 @@
+###############################################################################
+#                              PTime  .gitignore                              #
+#  Backend (.NET 8) + Frontend (Angular 17)                                   #
+###############################################################################
+
+############
+# .NET Core
+############
+bin/
+obj/
+out/
+publish/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+*.dbmdl
+*.pdb
+*.vspx
+*.vsps
+*.vsp
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+*.ncrunch*
+*.ide
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Entity Framework Migrations snapshots
+**/Migrations/*Designer.cs
+**/Migrations/*Snapshot.cs
+
+# Secret JSONs
+secrets.json
+appsettings.*.Local.json
+appsettings.*.Secrets.json
+
+# Rider / JetBrains
+.idea/
+*.dotCover
+*.dotMemory
+*.dotTrace
+*.dotUltimate
+
+# Visual Studio
+.vs/
+.vscode/
+*.VisualState.xml
+.vsconfig
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+##################
+# Angular / Node
+##################
+node_modules/
+
+# Angular build output
+dist/
+.angular/cache/
+.angular/local/
+
+############
+# Testing
+############
+coverage/
+*.trx
+TestResults/
+*.coverlet.*
+*.nxproject
+
+############
+# OS / Editor junk
+############
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Archives / backups
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.bak
+*.tmp
+*.temp
+*.old
+
+####################
+# Images & binaries
+####################
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.psd
+*.bmp
+*.ico
+*.exe
+*.dll
+*.so
+*.dylib
+
+####################
+# Logs
+####################
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+####################
+# Others
+####################
+.idea/
+.history/
+python_venv/
+env/
+*.swp
+!*.editorconfig
+
+###############################################################################
+# FIN                                                                          #
+###############################################################################

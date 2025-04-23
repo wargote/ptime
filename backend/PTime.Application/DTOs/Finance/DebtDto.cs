@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PTime.Application.DTOs.Finance
+{
+    public class DebtDto
+    {
+        public Guid Id { get; set; }
+        public string Description { get; set; }
+        public decimal TotalAmount { get; set; }
+        public decimal PaidAmount { get; set; }
+        public DateTime DueDate { get; set; }
+        public string Status { get; set; }
+    }
+}
