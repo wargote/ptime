@@ -36,6 +36,19 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DevPolicy", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")   
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();                    
+    });
+});
+
 // Add services to the container.
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
@@ -117,6 +130,7 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 app.UseGlobalExceptionHandling();
+app.UseCors("DevPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
