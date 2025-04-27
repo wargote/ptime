@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>
+    {{ data.mode === 'create' ? 'Nuevo recordatorio' : 'Editar recordatorio' }}
+  </h2>
+  
+  <form [formGroup]="form" mat-dialog-content>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" />
+      <mat-error *ngIf="form.controls.title.invalid">
+        Título obligatorio
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Vencimiento</mat-label>
+      <input matInput type="date" formControlName="dueDate" />
+      <mat-error *ngIf="form.controls.dueDate.invalid">
+        Fecha requerida
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Notas</mat-label>
+      <textarea matInput rows="2" formControlName="notes"></textarea>
+    </mat-form-field>
+    
+    <mat-slide-toggle formControlName="alertSent">Alerta enviada</mat-slide-toggle>
+
+  </form>
+  
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary"
+            [disabled]="form.invalid"
+            (click)="save()">
+      {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+    </button>
+  </mat-dialog-actions>
+  

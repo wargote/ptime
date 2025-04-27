@@ -14,6 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([jwtInterceptor])),
-    { provide: API_URL, useValue: environment.apiUrl }
+    { provide: API_URL, useValue: environment.apiUrl }, provideAnimationsAsync()
   ]
 };

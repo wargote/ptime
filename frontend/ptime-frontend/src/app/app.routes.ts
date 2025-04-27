@@ -14,10 +14,41 @@ export const routes: Routes = [
         canActivate: [authGuard]
     },
     {
-        path: 'finances',
+      path: 'incomes',
+      loadChildren: () =>
+        import('./modules/finances/incomes/incomes.routes').then(m => m.default),
+      canActivate: [authGuard]
+    },    
+      {
+        path: 'expenses',
         loadChildren: () =>
-          import('./modules/finances/finances.routes').then(m => m.default),
+          import('./modules/finances/expenses/expenses.routes').then(m => m.default),
         canActivate: [authGuard]
       },
+      {
+        path: 'loans',
+        loadChildren: () =>
+          import('./modules/finances/loans/loans.routes').then(m => m.default),
+        canActivate: [authGuard]
+      },
+      {
+        path: 'debts',
+        loadChildren: () =>
+          import('./modules/finances/debts/debts.routes').then(m => m.default),
+        canActivate: [authGuard]
+      },      
+      {
+        path: 'reminders',
+        loadChildren: () =>
+          import('./modules/finances/payment-reminders/reminders.routes').then(m => m.default),
+        canActivate: [authGuard]
+      },
+      {
+        path: 'saving-goals',
+        loadChildren: () =>
+          import('./modules/finances/saving-goals/goals.routes').then(m => m.default),
+        canActivate: [authGuard]
+      },
+      
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];

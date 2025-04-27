@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>
+    {{ data.mode === 'create' ? 'Nuevo ingreso' : 'Editar ingreso' }}
+  </h2>
+  
+  <form [formGroup]="form" mat-dialog-content>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Monto</mat-label>
+      <input matInput type="number" formControlName="amount" min="0.01" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Categoría</mat-label>
+      <input matInput formControlName="category" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Fecha</mat-label>
+      <input matInput type="date" formControlName="date" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Etiquetas</mat-label>
+      <input matInput formControlName="tags" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Notas</mat-label>
+      <textarea matInput rows="2" formControlName="notes"></textarea>
+    </mat-form-field>
+  </form>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary"
+            [disabled]="form.invalid"
+            (click)="save()">
+      {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+    </button>
+  </mat-dialog-actions>
+  

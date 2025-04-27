@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>
+    {{ data.mode === 'create' ? 'Nueva deuda' : 'Editar deuda' }}
+  </h2>
+  
+  <form [formGroup]="form" mat-dialog-content>
+  
+    <!-- Descripción -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Descripción</mat-label>
+      <input matInput formControlName="description" />
+      <mat-error *ngIf="form.controls.description.invalid">
+        La descripción es obligatoria
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Monto total -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Monto total</mat-label>
+      <input matInput type="number" formControlName="totalAmount" min="0.01" />
+      <mat-error *ngIf="form.controls.totalAmount.invalid">
+        Debe ser mayor a 0
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Monto pagado -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Monto pagado</mat-label>
+      <input matInput type="number" formControlName="paidAmount" min="0" />
+    </mat-form-field>
+  
+    <!-- Fecha de vencimiento -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Vencimiento</mat-label>
+      <input matInput type="date" formControlName="dueDate" />
+      <mat-error *ngIf="form.controls.dueDate.invalid">
+        Fecha requerida
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Estado -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="Pendiente">Pendiente</mat-option>
+        <mat-option value="Pagada">Pagada</mat-option>
+        <mat-option value="Atrasada">Atrasada</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+  </form>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary"
+            [disabled]="form.invalid"
+            (click)="save()">
+      {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+    </button>
+  </mat-dialog-actions>
+  

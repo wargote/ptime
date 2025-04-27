@@ -1,0 +1,26 @@
+<table>
+    <thead>
+      <tr><th>Título</th><th>Vencimiento</th><th>Notas</th><th>Enviado</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of reminders">
+        <td>{{ r.title }}</td>
+        <td>{{ r.dueDate }}</td>
+        <td>{{ r.notes }}</td>
+        <td>
+          <mat-icon [color]="r.alertSent ? 'primary' : 'warn'">
+            {{ r.alertSent ? 'check_circle' : 'schedule' }}
+          </mat-icon>
+        </td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(r)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(r.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

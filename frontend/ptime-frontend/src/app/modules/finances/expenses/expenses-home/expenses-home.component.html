@@ -1,0 +1,14 @@
+<h2>Gastos</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-expense-table
+  [expenses]="expenses"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-expense-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !expenses.length">Sin registros.</p>

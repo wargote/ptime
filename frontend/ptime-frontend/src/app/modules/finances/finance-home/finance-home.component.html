@@ -1,9 +1,0 @@
-<h2>Ingresos</h2>
-
-<button (click)="abrirModal()">+ Añadir ingreso</button>
-
-<div *ngIf="loading">Cargando…</div>
-<div *ngIf="error">{{ error }}</div>
-
-<pt-income-table *ngIf="!loading && incomes.length" [incomes]="incomes"></pt-income-table>
-<p *ngIf="!loading && !incomes.length">Sin registros.</p>

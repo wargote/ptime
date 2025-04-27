@@ -1,0 +1,23 @@
+<table>
+    <thead>
+      <tr><th>Vencimiento</th><th>Tipo</th><th>Monto</th><th>Estado</th><th>Descripcion</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of loans">
+        <td>{{ l.dueDate }}</td>
+        <td>{{ l.type }}</td>
+        <td>{{ l.amount | currency }}</td>
+        <td>{{ l.status }}</td>
+        <td>{{ l.description }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(l)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(l.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

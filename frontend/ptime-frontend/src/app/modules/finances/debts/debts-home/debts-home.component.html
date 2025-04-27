@@ -1,0 +1,14 @@
+<h2>Deudas</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-debt-table
+  [debts]="debts"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-debt-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !debts.length">Sin registros.</p>

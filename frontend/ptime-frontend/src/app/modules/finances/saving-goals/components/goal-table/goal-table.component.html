@@ -1,0 +1,23 @@
+<table>
+    <thead>
+      <tr><th>Título</th><th>Meta</th><th>Ahorrado</th><th>Deadline</th><th>Notas</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let g of goals">
+        <td>{{ g.title }}</td>
+        <td>{{ g.targetAmount | currency }}</td>
+        <td>{{ g.savedAmount  | currency }}</td>
+        <td>{{ g.deadline }}</td>
+        <td>{{ g.notes }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(g)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(g.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
