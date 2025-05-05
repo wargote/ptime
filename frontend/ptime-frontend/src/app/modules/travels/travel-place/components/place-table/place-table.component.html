@@ -1,0 +1,27 @@
+<table>
+    <thead>
+      <tr>
+        <th>Tipo</th><th>Nombre</th><th>Ubicación</th>
+        <th>Estado</th><th>Notas</th><th>Photo</th><th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of places">
+        <td>{{ p.type }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.location }}</td>
+        <td>{{ p.state }}</td>
+        <td>{{ p.notes }}</td>
+        <td>{{ p.photoUrl }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(p)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(p.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

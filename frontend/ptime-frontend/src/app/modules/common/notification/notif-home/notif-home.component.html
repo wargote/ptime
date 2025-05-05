@@ -1,0 +1,14 @@
+<h2>Notificaciones</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-notif-table
+  [notifications]="notifications"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-notif-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !notifications.length">Sin registros.</p>

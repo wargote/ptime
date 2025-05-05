@@ -1,0 +1,22 @@
+<table>
+    <thead>
+      <tr><th>Título</th><th>Autor</th><th>Terminó</th><th>Notas</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of books">
+        <td>{{ b.title }}</td>
+        <td>{{ b.author }}</td>
+        <td>{{ b.finishedDate }}</td>
+        <td>{{ b.notes }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(b)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(b.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

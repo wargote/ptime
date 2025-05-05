@@ -1,0 +1,23 @@
+<table>
+    <thead>
+      <tr><th>Fecha</th><th>Categoría</th><th>Monto</th><th>Etiqueta</th><th>Notas</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of incomes">
+        <td>{{ i.date }}</td>
+        <td>{{ i.category }}</td>
+        <td>{{ i.amount | currency }}</td>
+        <td>{{ i.tags }}</td>
+        <td>{{ i.notes }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(i)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(i.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

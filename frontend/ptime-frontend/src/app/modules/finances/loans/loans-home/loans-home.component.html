@@ -1,0 +1,14 @@
+<h2>Préstamos</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-loan-table
+  [loans]="loans"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-loan-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !loans.length">Sin registros.</p>

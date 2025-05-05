@@ -1,0 +1,14 @@
+<h2>Registro de peso</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-weight-table
+  [records]="records"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-weight-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !records.length">Sin registros.</p>

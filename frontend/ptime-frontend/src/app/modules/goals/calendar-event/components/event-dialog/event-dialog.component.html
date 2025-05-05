@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>
+    {{ data.mode === 'create' ? 'Nuevo evento' : 'Editar evento' }}
+  </h2>
+  
+  <form [formGroup]="form" mat-dialog-content>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Inicio</mat-label>
+      <input matInput type="datetime-local" formControlName="startDateTime" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Fin</mat-label>
+      <input matInput type="datetime-local" formControlName="endDateTime" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Notas</mat-label>
+      <textarea matInput rows="2" formControlName="notes"></textarea>
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="syncedWithGoogle">Sync with Google?</mat-slide-toggle>
+
+  </form>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary"
+            [disabled]="form.invalid"
+            (click)="save()">
+      {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+    </button>
+  </mat-dialog-actions>
+  

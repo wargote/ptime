@@ -1,0 +1,14 @@
+<h2>Recordatorios de pago</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-reminder-table
+  [reminders]="reminders"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-reminder-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !reminders.length">Sin registros.</p>

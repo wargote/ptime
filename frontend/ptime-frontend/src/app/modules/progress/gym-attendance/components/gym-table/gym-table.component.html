@@ -1,0 +1,19 @@
+<table>
+    <thead>
+      <tr><th>Fecha</th><th>Duración (min)</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of sessions">
+        <td>{{ s.date }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(s)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(s.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

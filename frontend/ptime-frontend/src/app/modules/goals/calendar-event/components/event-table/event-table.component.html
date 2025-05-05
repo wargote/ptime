@@ -1,0 +1,26 @@
+<table>
+    <thead>
+      <tr><th>Título</th><th>Inicio</th><th>Fin</th><th>Google</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of events">
+        <td>{{ e.title }}</td>
+        <td>{{ e.startDateTime | date:'short' }}</td>
+        <td>{{ e.endDateTime   | date:'short' }}</td>
+        <td>
+          <mat-icon [color]="e.syncedWithGoogle ? 'primary' : 'warn'">
+            {{ e.syncedWithGoogle ? 'cloud_done' : 'cloud_off' }}
+          </mat-icon>
+        </td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(e)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(e.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

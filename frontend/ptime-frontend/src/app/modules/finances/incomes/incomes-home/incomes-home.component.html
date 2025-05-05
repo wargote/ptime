@@ -1,0 +1,14 @@
+<h2>Ingresos</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-income-table
+  [incomes]="incomes"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-income-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !incomes.length">Sin registros.</p>

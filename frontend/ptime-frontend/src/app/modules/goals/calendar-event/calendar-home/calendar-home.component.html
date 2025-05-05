@@ -1,0 +1,14 @@
+<h2>Eventos del calendario</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-event-table
+  [events]="events"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-event-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !events.length">Sin eventos.</p>

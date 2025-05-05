@@ -1,0 +1,14 @@
+<h2>Metas de ahorro</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-goal-table
+  [goals]="goals"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-goal-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !goals.length">Sin registros.</p>
