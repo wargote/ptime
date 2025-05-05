@@ -1,0 +1,14 @@
+<h2>Libros leídos</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-book-table
+  [books]="books"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-book-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !books.length">Sin registros.</p>

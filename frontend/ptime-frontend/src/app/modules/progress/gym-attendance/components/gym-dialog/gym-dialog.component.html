@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>{{ data.mode === 'create' ? 'Nueva sesión' : 'Editar sesión' }}</h2>
+
+<form [formGroup]="form" mat-dialog-content>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Fecha</mat-label>
+    <input matInput type="date" formControlName="date" />
+  </mat-form-field>
+
+</form>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary"
+          [disabled]="form.invalid"
+          (click)="save()">
+    {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,20 @@
+<table>
+    <thead>
+      <tr><th>Fecha</th><th>Peso (kg)</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let w of records">
+        <td>{{ w.date }}</td>
+        <td>{{ w.weight }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(w)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(w.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

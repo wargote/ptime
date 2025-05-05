@@ -1,0 +1,14 @@
+<h2>Lista de compras</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-shopping-table
+  [items]="items"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-shopping-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !items.length">Sin ítems.</p>

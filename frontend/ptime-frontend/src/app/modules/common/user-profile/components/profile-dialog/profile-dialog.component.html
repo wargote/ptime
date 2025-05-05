@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>{{ data.mode === 'create' ? 'Nuevo perfil' : 'Editar perfil' }}</h2>
+
+<form [formGroup]="form" mat-dialog-content>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Nombre visible</mat-label>
+    <input matInput formControlName="displayName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>URL de imagen</mat-label>
+    <input matInput formControlName="profileImageUrl" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Tema</mat-label>
+    <mat-select formControlName="theme">
+      <mat-option value="Light">Claro</mat-option>
+      <mat-option value="Dark">Oscuro</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Idioma</mat-label>
+    <input matInput formControlName="language" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Settings JSON</mat-label>
+    <textarea matInput rows="3" formControlName="settingsJson"></textarea>
+  </mat-form-field>
+
+</form>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary"
+          [disabled]="form.invalid"
+          (click)="save()">
+    {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+  </button>
+</mat-dialog-actions>

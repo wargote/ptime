@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>
+    {{ data.mode === 'create' ? 'Nuevo lugar' : 'Editar lugar' }}
+  </h2>
+  
+  <form [formGroup]="form" mat-dialog-content>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="Ciudad/Pais">Ciudad / País</mat-option>
+        <mat-option value="Restaurante">Restaurante</mat-option>
+        <mat-option value="Hotel">Hotel</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Ubicación</mat-label>
+      <input matInput formControlName="location" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="state">
+        <mat-option value="Por visitar">Por visitar</mat-option>
+        <mat-option value="Visitado">Visitado</mat-option>
+        <mat-option value="Favorito">Favorito</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Notas</mat-label>
+      <textarea matInput rows="2" formControlName="notes"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Foto URL</mat-label>
+      <input matInput formControlName="photoUrl" />
+    </mat-form-field>
+  
+  </form>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary"
+            [disabled]="form.invalid"
+            (click)="save()">
+      {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+    </button>
+  </mat-dialog-actions>
+  

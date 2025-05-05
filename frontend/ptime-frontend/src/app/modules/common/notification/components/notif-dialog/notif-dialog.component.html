@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>{{ data.mode === 'create' ? 'Nueva notificación' : 'Editar notificación' }}</h2>
+
+<form [formGroup]="form" mat-dialog-content>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Mensaje</mat-label>
+    <textarea matInput rows="3" formControlName="message"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Tipo</mat-label>
+    <mat-select formControlName="type">
+      <mat-option value="Info">Info</mat-option>
+      <mat-option value="Warning">Warning</mat-option>
+      <mat-option value="Error">Error</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Fecha envío</mat-label>
+    <input matInput type="datetime-local" formControlName="sentDate" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="Pendiente">Pendiente</mat-option>
+      <mat-option value="Enviada">Enviada</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</form>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary"
+          [disabled]="form.invalid"
+          (click)="save()">
+    {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+  </button>
+</mat-dialog-actions>

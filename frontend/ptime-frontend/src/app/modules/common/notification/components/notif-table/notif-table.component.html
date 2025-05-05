@@ -1,0 +1,24 @@
+<table>
+    <thead>
+      <tr>
+        <th>Mensaje</th><th>Tipo</th><th>Fecha</th><th>Estado</th><th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let n of notifications">
+        <td>{{ n.message }}</td>
+        <td>{{ n.type }}</td>
+        <td>{{ n.sentDate | date:'short' }}</td>
+        <td>{{ n.status }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(n)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(n.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

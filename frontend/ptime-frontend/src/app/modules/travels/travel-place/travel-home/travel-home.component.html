@@ -1,0 +1,14 @@
+<h2>Lugares por visitar</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-place-table
+  [places]="places"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-place-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !places.length">Sin registros.</p>

@@ -1,0 +1,14 @@
+<h2>Asistencia al gym</h2>
+
+<button mat-fab color="primary" (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<pt-gym-table
+  [sessions]="sessions"
+  (edit)="edit($event)"
+  (remove)="remove($event)"
+></pt-gym-table>
+
+<div *ngIf="loading">Cargando…</div>
+<p *ngIf="!loading && !sessions.length">Sin registros.</p>

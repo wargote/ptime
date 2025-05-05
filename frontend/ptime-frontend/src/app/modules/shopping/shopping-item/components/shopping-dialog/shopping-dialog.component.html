@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{ data.mode === 'create' ? 'Nueva compra' : 'Editar compra' }}</h2>
+
+<form [formGroup]="form" mat-dialog-content>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Categoría</mat-label>
+    <input matInput formControlName="category" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="Pendiente">Pendiente</mat-option>
+      <mat-option value="Comprado">Comprado</mat-option>
+      <mat-option value="Cancelado">Cancelado</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Fecha creación</mat-label>
+    <input matInput type="date" formControlName="createdDate" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Notas</mat-label>
+    <textarea matInput rows="2" formControlName="notes"></textarea>
+  </mat-form-field>
+
+</form>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary"
+          [disabled]="form.invalid"
+          (click)="save()">
+    {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+  </button>
+</mat-dialog-actions>

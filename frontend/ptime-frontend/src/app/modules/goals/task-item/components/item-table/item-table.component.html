@@ -1,0 +1,22 @@
+<table>
+    <thead>
+      <tr><th>Título</th><th>Estado</th><th>Pri.</th><th>Deadline</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tasks">
+        <td>{{ t.title }}</td>
+        <td>{{ t.status }}</td>
+        <td>{{ t.priority }}</td>
+        <td>{{ t.dueDate }}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="edit.emit(t)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="remove.emit(t.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

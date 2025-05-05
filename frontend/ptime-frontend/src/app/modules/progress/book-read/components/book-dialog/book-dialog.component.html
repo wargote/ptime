@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>{{ data.mode === 'create' ? 'Nuevo libro' : 'Editar libro' }}</h2>
+
+<form [formGroup]="form" mat-dialog-content>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Autor</mat-label>
+    <input matInput formControlName="author" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Fecha de finalización</mat-label>
+    <input matInput type="date" formControlName="finishedDate" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Notas</mat-label>
+    <textarea matInput rows="2" formControlName="notes"></textarea>
+  </mat-form-field>
+
+</form>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary"
+          [disabled]="form.invalid"
+          (click)="save()">
+    {{ data.mode === 'create' ? 'Crear' : 'Guardar' }}
+  </button>
+</mat-dialog-actions>
