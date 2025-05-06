@@ -1,0 +1,21 @@
+mat-toolbar {
+    backdrop-filter: blur(6px);
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+  }
+  
+
+  .spacer {
+    flex: 1 1 auto;     // ocupa todo el espacio restante
+  }
+  
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
