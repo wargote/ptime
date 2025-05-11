@@ -1,0 +1,45 @@
+.table-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: .5rem;
+  }
+  
+  table {
+    th.mat-header-cell { font-weight: 600; }
+    td.mat-cell        { vertical-align: middle; }
+  }
+  
+
+  mat-card {
+    padding: 1rem;
+  }
+  
+  /* cabecera */
+  th.mat-header-cell {
+    background: #eee;
+    font-weight: 600;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  /* filas zebra */
+  tr.mat-row:nth-child(even) td.mat-cell {
+    background: #fafafa;
+  }
+  
+  /* celdas borde inferior */
+  td.mat-cell {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  /* toolbar derecha */
+  .table-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: .75rem;
+  }
+  
+  /* paginator alineado a la derecha */
+  mat-paginator {
+    margin-top: .5rem;
+  }
+  

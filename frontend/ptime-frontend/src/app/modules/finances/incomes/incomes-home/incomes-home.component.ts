@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { IncomeApiService, IncomeDto } from '../services/income-api.service';
 import { IncomeTableComponent } from '../components/income-table/income-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-incomes-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, IncomeTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, IncomeTableComponent, MatCardModule],
   templateUrl: './incomes-home.component.html',
   styleUrl: './incomes-home.component.scss'
 })

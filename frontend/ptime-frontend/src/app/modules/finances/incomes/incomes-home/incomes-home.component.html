@@ -1,14 +1,23 @@
-<h2>Ingresos</h2>
+<mat-card class="mat-elevation-z3 income-card">
 
-<button mat-fab color="primary" (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
+  <!-- encabezado -->
+  <header class="card-header">
+    <h2>Ingresos</h2>
 
-<pt-income-table
-  [incomes]="incomes"
-  (edit)="edit($event)"
-  (remove)="remove($event)"
-></pt-income-table>
+    <button mat-raised-button color="accent"
+            class="add-btn"
+            (click)="add()">
+      <mat-icon fontIcon="add" class="mr-1"></mat-icon>
+      Nuevo
+    </button>
+  </header>
 
-<div *ngIf="loading">Cargando…</div>
-<p *ngIf="!loading && !incomes.length">Sin registros.</p>
+  <!-- tabla -->
+  <pt-income-table
+    [incomes]="incomes"
+    (edit)="edit($event)"
+    (remove)="remove($event)">
+  </pt-income-table>
+
+</mat-card>
+

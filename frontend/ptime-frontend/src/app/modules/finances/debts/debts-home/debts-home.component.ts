@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatCardModule } from '@angular/material/card';
 import { DebtApiService, DebtDto } from '../services/debt-api.service';
 import { DebtTableComponent } from '../components/debt-table/debt-table.component';
 import { DebtDialogComponent, DebtDialogData } from '../components/debt-dialog/debt-dialog.component';
@@ -12,7 +12,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-debts-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, DebtTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, DebtTableComponent, MatCardModule],
   templateUrl: './debts-home.component.html',
   styleUrl: './debts-home.component.scss'
 })
