@@ -4,4 +4,13 @@ mat-nav-list {
       font-weight: 500;
     }
   }
+
+mat-list-item {
+    cursor: pointer;
+  }
   
+.mat-nav-list .mat-list-item {
+    font-weight: 500;
+  }
+  
+.pl-6 { padding-left: 1.5rem; }   
