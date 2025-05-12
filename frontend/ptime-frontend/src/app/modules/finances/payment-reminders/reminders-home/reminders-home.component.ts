@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { PaymentReminderApiService, PaymentReminderDto } from '../services/payment-reminder-api.service';
 import { ReminderTableComponent } from '../components/reminder-table/reminder-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-reminders-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, ReminderTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, ReminderTableComponent, MatCardModule],
   templateUrl: './reminders-home.component.html',
   styleUrl: './reminders-home.component.scss'
 })

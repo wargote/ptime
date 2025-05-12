@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { SavingGoalApiService, SavingGoalDto } from '../services/saving-goal-api.service';
 import { GoalTableComponent } from '../components/goal-table/goal-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-goals-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, GoalTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, GoalTableComponent, MatCardModule],
   templateUrl: './goals-home.component.html',
   styleUrl: './goals-home.component.scss'
 })

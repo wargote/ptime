@@ -1,14 +1,22 @@
-<h2>Registro de peso</h2>
+<mat-card class="mat-elevation-z3 weight-card">
 
-<button mat-fab color="primary" (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
+  <!-- encabezado -->
+  <header class="card-header">
+    <h2>Peso</h2>
 
-<pt-weight-table
-  [records]="records"
-  (edit)="edit($event)"
-  (remove)="remove($event)"
-></pt-weight-table>
+    <button mat-raised-button color="accent"
+            class="add-btn"
+            (click)="add()">
+      <mat-icon fontIcon="add" class="mr-1"></mat-icon>
+      Nuevo
+    </button>
+  </header>
 
-<div *ngIf="loading">Cargando…</div>
-<p *ngIf="!loading && !records.length">Sin registros.</p>
+  <!-- tabla -->
+  <pt-weight-table
+    [records]="records"
+    (edit)="edit($event)"
+    (remove)="remove($event)">
+  </pt-weight-table>
+
+</mat-card>

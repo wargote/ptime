@@ -1,26 +1,58 @@
-<table>
-    <thead>
-      <tr>
-        <th>Nombre</th><th>Tema</th><th>Idioma</th><th>Imagen</th><th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of profiles">
-        <td>{{ p.displayName }}</td>
-        <td>{{ p.theme }}</td>
-        <td>{{ p.language }}</td>
-        <td>
-          <img *ngIf="p.profileImageUrl" [src]="p.profileImageUrl" width="40" height="40" />
-        </td>
-        <td>
-          <button mat-icon-button color="primary" (click)="edit.emit(p)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="remove.emit(p.id!)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
+<mat-card class="mat-elevation-z2">
+
+  <div class="table-toolbar">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($any($event.target).value)"
+             placeholder="Nombre o idioma…">
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort class="w-full">
+
+    <!-- Avatar -->
+    <ng-container matColumnDef="avatar">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let p">
+        <img [src]="p.profileImageUrl || defaultAvatar"
+             class="avatar" [matTooltip]="p.displayName" />
+      </td>
+    </ng-container>
+
+    <!-- Nombre -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+      <td mat-cell *matCellDef="let p">{{ p.displayName }}</td>
+    </ng-container>
+
+    <!-- Tema -->
+    <ng-container matColumnDef="theme">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tema</th>
+      <td mat-cell *matCellDef="let p">{{ p.theme }}</td>
+    </ng-container>
+
+    <!-- Idioma -->
+    <ng-container matColumnDef="lang">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Idioma</th>
+      <td mat-cell *matCellDef="let p">{{ p.language }}</td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let p">
+        <button mat-icon-button color="primary" (click)="edit.emit(p)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="remove.emit(p.id!)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row        *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+
+  <mat-paginator pageSize="10" showFirstLastButtons></mat-paginator>
+</mat-card>

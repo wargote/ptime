@@ -1,27 +1,65 @@
-<table>
-    <thead>
-      <tr>
-        <th>Tipo</th><th>Nombre</th><th>Ubicación</th>
-        <th>Estado</th><th>Notas</th><th>Photo</th><th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of places">
-        <td>{{ p.type }}</td>
-        <td>{{ p.name }}</td>
-        <td>{{ p.location }}</td>
-        <td>{{ p.state }}</td>
-        <td>{{ p.notes }}</td>
-        <td>{{ p.photoUrl }}</td>
-        <td>
-          <button mat-icon-button color="primary" (click)="edit.emit(p)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="remove.emit(p.id!)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
+<mat-card class="mat-elevation-z2">
+
+  <!-- Buscador -->
+  <div class="table-toolbar">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($any($event.target).value)"
+             placeholder="Nombre, ubicación, notas…">
+    </mat-form-field>
+  </div>
+
+  <!-- Tabla -->
+  <table mat-table [dataSource]="dataSource" matSort class="w-full">
+
+    <!-- Tipo -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+      <td mat-cell *matCellDef="let p">{{ p.type }}</td>
+    </ng-container>
+
+    <!-- Nombre -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+      <td mat-cell *matCellDef="let p">{{ p.name }}</td>
+    </ng-container>
+
+    <!-- Ubicación -->
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ubicación</th>
+      <td mat-cell *matCellDef="let p">{{ p.location }}</td>
+    </ng-container>
+
+    <!-- Estado -->
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+      <td mat-cell *matCellDef="let p">{{ p.state }}</td>
+    </ng-container>
+
+    <!-- Notas -->
+    <ng-container matColumnDef="notes">
+      <th mat-header-cell *matHeaderCellDef>Notas</th>
+      <td mat-cell *matCellDef="let p">
+        <span class="truncate" [matTooltip]="p.notes">{{ p.notes }}</span>
+      </td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let p">
+        <button mat-icon-button color="primary" (click)="edit.emit(p)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="remove.emit(p.id!)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row        *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+
+  <mat-paginator pageSize="10" showFirstLastButtons></mat-paginator>
+</mat-card>

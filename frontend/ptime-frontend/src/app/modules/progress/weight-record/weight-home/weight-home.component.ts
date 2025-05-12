@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule }    from '@angular/material/card';   // 👈 requerido
 
 import { WeightRecordApiService, WeightRecordDto } from '../services/weight-record-api.service';
 import { WeightTableComponent } from '../components/weight-table/weight-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-weight-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, WeightTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, WeightTableComponent, MatCardModule],
   templateUrl: './weight-home.component.html',
   styleUrl: './weight-home.component.scss'
 })

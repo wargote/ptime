@@ -1,14 +1,20 @@
-<h2>Préstamos</h2>
+<mat-card class="mat-elevation-z3 loan-card">
 
-<button mat-fab color="primary" (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
+  <header class="card-header">
+    <h2>Préstamos</h2>
 
-<pt-loan-table
-  [loans]="loans"
-  (edit)="edit($event)"
-  (remove)="remove($event)"
-></pt-loan-table>
+    <button mat-raised-button color="accent"
+            class="add-btn"
+            (click)="add()">
+      <mat-icon fontIcon="add" class="mr-1"></mat-icon>
+      Nuevo
+    </button>
+  </header>
 
-<div *ngIf="loading">Cargando…</div>
-<p *ngIf="!loading && !loans.length">Sin registros.</p>
+  <pt-loan-table
+    [loans]="loans"
+    (edit)="edit($event)"
+    (remove)="remove($event)">
+  </pt-loan-table>
+
+</mat-card>

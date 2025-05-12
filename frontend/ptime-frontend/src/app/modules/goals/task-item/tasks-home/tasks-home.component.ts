@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';  
 
 import { TaskItemApiService, TaskItemDto } from '../services/task-item-api.service';
 import { ItemTableComponent } from '../components/item-table/item-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-tasks-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, ItemTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, ItemTableComponent, MatCardModule],
   templateUrl: './tasks-home.component.html',
   styleUrl: './tasks-home.component.scss'
 })

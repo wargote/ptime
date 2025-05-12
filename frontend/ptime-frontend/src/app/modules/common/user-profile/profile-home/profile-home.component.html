@@ -1,14 +1,20 @@
-<h2>Perfiles de usuario</h2>
+<mat-card class="mat-elevation-z3 profile-card">
 
-<button mat-fab color="primary" (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
+  <header class="card-header">
+    <h2>Perfiles de usuario</h2>
 
-<pt-profile-table
-  [profiles]="profiles"
-  (edit)="edit($event)"
-  (remove)="remove($event)"
-></pt-profile-table>
+    <button mat-raised-button color="accent"
+            class="add-btn"
+            (click)="add()">
+      <mat-icon fontIcon="add" class="mr-1"></mat-icon>
+      Nuevo
+    </button>
+  </header>
 
-<div *ngIf="loading">Cargando…</div>
-<p *ngIf="!loading && !profiles.length">Sin perfiles.</p>
+  <pt-profile-table
+    [profiles]="profiles"
+    (edit)="edit($event)"
+    (remove)="remove($event)">
+  </pt-profile-table>
+
+</mat-card>

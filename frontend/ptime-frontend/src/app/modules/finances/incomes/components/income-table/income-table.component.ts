@@ -35,7 +35,7 @@ import { IncomeDto } from '../../services/income-api.service';
   templateUrl: './income-table.component.html',
   styleUrl: './income-table.component.scss'
 })
-export class IncomeTableComponent {
+export class IncomeTableComponent implements OnChanges {
   @Input() incomes: IncomeDto[] = [];
   @Output() edit   = new EventEmitter<IncomeDto>();
   @Output() remove = new EventEmitter<string>();
