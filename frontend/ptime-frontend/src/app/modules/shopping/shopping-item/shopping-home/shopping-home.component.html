@@ -1,14 +1,20 @@
-<h2>Lista de compras</h2>
+<mat-card class="mat-elevation-z3 shop-card">
 
-<button mat-fab color="primary" (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
+  <header class="card-header">
+    <h2>Lista de compras</h2>
 
-<pt-shopping-table
-  [items]="items"
-  (edit)="edit($event)"
-  (remove)="remove($event)"
-></pt-shopping-table>
+    <button mat-raised-button color="accent"
+            class="add-btn"
+            (click)="add()">
+      <mat-icon fontIcon="add" class="mr-1"></mat-icon>
+      Nuevo
+    </button>
+  </header>
 
-<div *ngIf="loading">Cargando…</div>
-<p *ngIf="!loading && !items.length">Sin ítems.</p>
+  <pt-shopping-table
+    [items]="items"
+    (edit)="edit($event)"
+    (remove)="remove($event)">
+  </pt-shopping-table>
+
+</mat-card>

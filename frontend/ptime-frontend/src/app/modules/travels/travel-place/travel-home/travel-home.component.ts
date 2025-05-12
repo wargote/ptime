@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { TravelPlaceApiService, TravelPlaceDto } from '../services/travel-place-api.service';
 import { PlaceTableComponent } from '../components/place-table/place-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-travel-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, PlaceTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, PlaceTableComponent, MatCardModule],
   templateUrl: './travel-home.component.html',
   styleUrl: './travel-home.component.scss'
 })

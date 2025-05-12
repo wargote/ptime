@@ -1,0 +1,31 @@
+.task-card {
+  padding: 1rem 1.25rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+}
+
+.add-btn {
+  text-transform: none;
+  font-weight: 500;
+
+  mat-icon { font-size: 20px; }
+}
+
+.mat-mdc-raised-button.mat-accent {
+    --mdc-protected-button-container-color: rgb(103 58 183);
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+    color: #ffffff;
+}

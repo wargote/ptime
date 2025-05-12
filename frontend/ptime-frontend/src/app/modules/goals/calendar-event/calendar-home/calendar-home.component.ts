@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { CalendarEventApiService, CalendarEventDto } from '../services/calendar-event-api.service';
 import { EventTableComponent } from '../components/event-table/event-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-calendar-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, EventTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, EventTableComponent, MatCardModule],
   templateUrl: './calendar-home.component.html',
   styleUrl: './calendar-home.component.scss'
 })

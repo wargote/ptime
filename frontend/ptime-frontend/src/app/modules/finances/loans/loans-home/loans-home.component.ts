@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { LoanApiService, LoanDto } from '../services/loan-api.service';
 import { LoanTableComponent } from '../components/loan-table/loan-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-loans-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, LoanTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, LoanTableComponent, MatCardModule],
   templateUrl: './loans-home.component.html',
   styleUrl: './loans-home.component.scss'
 })

@@ -1,14 +1,20 @@
-<h2>Eventos del calendario</h2>
+<mat-card class="mat-elevation-z3 event-card">
 
-<button mat-fab color="primary" (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
+  <header class="card-header">
+    <h2>Eventos del calendario</h2>
 
-<pt-event-table
-  [events]="events"
-  (edit)="edit($event)"
-  (remove)="remove($event)"
-></pt-event-table>
+    <button mat-raised-button color="accent"
+            class="add-btn"
+            (click)="add()">
+      <mat-icon fontIcon="add" class="mr-1"></mat-icon>
+      Nuevo
+    </button>
+  </header>
 
-<div *ngIf="loading">Cargando…</div>
-<p *ngIf="!loading && !events.length">Sin eventos.</p>
+  <pt-event-table
+    [events]="events"
+    (edit)="edit($event)"
+    (remove)="remove($event)">
+  </pt-event-table>
+
+</mat-card>

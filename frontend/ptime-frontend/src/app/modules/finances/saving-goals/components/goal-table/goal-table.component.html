@@ -1,23 +1,71 @@
-<table>
-    <thead>
-      <tr><th>Título</th><th>Meta</th><th>Ahorrado</th><th>Deadline</th><th>Notas</th><th></th></tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let g of goals">
-        <td>{{ g.title }}</td>
-        <td>{{ g.targetAmount | currency }}</td>
-        <td>{{ g.savedAmount  | currency }}</td>
-        <td>{{ g.deadline }}</td>
-        <td>{{ g.notes }}</td>
-        <td>
-          <button mat-icon-button color="primary" (click)="edit.emit(g)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="remove.emit(g.id!)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
+<mat-card class="mat-elevation-z2">
+
+  <div class="table-toolbar">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($any($event.target).value)"
+             placeholder="Título, notas…">
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort class="w-full">
+
+    <!-- Título -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Título</th>
+      <td mat-cell *matCellDef="let g">{{ g.title }}</td>
+    </ng-container>
+
+    <!-- Objetivo -->
+    <ng-container matColumnDef="target">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Objetivo</th>
+      <td mat-cell *matCellDef="let g">{{ g.targetAmount | currency }}</td>
+    </ng-container>
+
+    <!-- Ahorrado -->
+    <ng-container matColumnDef="saved">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ahorrado</th>
+      <td mat-cell *matCellDef="let g">{{ g.savedAmount | currency }}</td>
+    </ng-container>
+
+    <!-- Fecha límite -->
+    <ng-container matColumnDef="deadline">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Límite</th>
+      <td mat-cell *matCellDef="let g">{{ g.deadline | date }}</td>
+    </ng-container>
+
+    <!-- Progreso -->
+    <ng-container matColumnDef="progress">
+      <th mat-header-cell *matHeaderCellDef>Progreso</th>
+      <td mat-cell *matCellDef="let g">
+        {{ progress(g) }} %
+      </td>
+    </ng-container>
+
+    <!-- Notas -->
+    <ng-container matColumnDef="notes">
+      <th mat-header-cell *matHeaderCellDef>Notas</th>
+      <td mat-cell *matCellDef="let g">
+        <span class="truncate" [matTooltip]="g.notes">{{ g.notes }}</span>
+      </td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let g">
+        <button mat-icon-button color="primary" (click)="edit.emit(g)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="remove.emit(g.id!)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row        *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+
+  <mat-paginator pageSize="10" showFirstLastButtons></mat-paginator>
+</mat-card>

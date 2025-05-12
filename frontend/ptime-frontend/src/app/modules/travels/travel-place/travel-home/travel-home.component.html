@@ -1,14 +1,20 @@
-<h2>Lugares por visitar</h2>
+<mat-card class="mat-elevation-z3 travel-card">
 
-<button mat-fab color="primary" (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
+  <header class="card-header">
+    <h2>Lugares</h2>
 
-<pt-place-table
-  [places]="places"
-  (edit)="edit($event)"
-  (remove)="remove($event)"
-></pt-place-table>
+    <button mat-raised-button color="accent"
+            class="add-btn"
+            (click)="add()">
+      <mat-icon fontIcon="add" class="mr-1"></mat-icon>
+      Nuevo
+    </button>
+  </header>
 
-<div *ngIf="loading">Cargando…</div>
-<p *ngIf="!loading && !places.length">Sin registros.</p>
+  <pt-place-table
+    [places]="places"
+    (edit)="edit($event)"
+    (remove)="remove($event)">
+  </pt-place-table>
+
+</mat-card>

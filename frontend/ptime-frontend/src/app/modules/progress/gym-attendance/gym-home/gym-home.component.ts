@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';  // 👈 solicitado
 
 import { GymAttendanceApiService, GymAttendanceDto } from '../services/gym-attendance-api.service';
 import { GymTableComponent } from '../components/gym-table/gym-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-gym-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, GymTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, GymTableComponent, MatCardModule],
   templateUrl: './gym-home.component.html',
   styleUrl: './gym-home.component.scss'
 })

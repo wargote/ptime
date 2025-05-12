@@ -1,23 +1,67 @@
-<table>
-    <thead>
-      <tr><th>Vencimiento</th><th>Tipo</th><th>Monto</th><th>Estado</th><th>Descripcion</th><th></th></tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let l of loans">
-        <td>{{ l.dueDate }}</td>
-        <td>{{ l.type }}</td>
-        <td>{{ l.amount | currency }}</td>
-        <td>{{ l.status }}</td>
-        <td>{{ l.description }}</td>
-        <td>
-          <button mat-icon-button color="primary" (click)="edit.emit(l)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="remove.emit(l.id!)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
+<mat-card class="mat-elevation-z2">
+
+  <div class="table-toolbar">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($any($event.target).value)"
+             placeholder="Tipo, descripción…">
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort class="w-full">
+
+    <!-- Monto -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
+      <td mat-cell *matCellDef="let l">{{ l.amount | currency }}</td>
+    </ng-container>
+
+    <!-- Tipo -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+      <td mat-cell *matCellDef="let l">{{ l.type }}</td>
+    </ng-container>
+
+    <!-- Descripción -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Descripción</th>
+      <td mat-cell *matCellDef="let l">
+        <span class="truncate" [matTooltip]="l.description">{{ l.description }}</span>
+      </td>
+    </ng-container>
+
+    <!-- Vence -->
+    <ng-container matColumnDef="due">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vence</th>
+      <td mat-cell *matCellDef="let l">{{ l.dueDate | date }}</td>
+    </ng-container>
+
+    <!-- Estado -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+      <td mat-cell *matCellDef="let l">
+        <mat-chip [color]="l.status === 'Pagado' ? 'primary' : 'warn'" selected>
+          {{ l.status }}
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let l">
+        <button mat-icon-button color="primary" (click)="edit.emit(l)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="remove.emit(l.id!)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row        *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+
+  <mat-paginator pageSize="10" showFirstLastButtons></mat-paginator>
+</mat-card>

@@ -7,12 +7,13 @@ import { ExpenseApiService, ExpenseDto } from '../services/expense-api.service';
 import { ExpenseTableComponent } from '../components/expense-table/expense-table.component';
 import { ExpenseDialogComponent, ExpenseDialogData } from '../components/expense-dialog/expense-dialog.component';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @Component({
   selector: 'pt-expenses-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, ExpenseTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, ExpenseTableComponent, MatCardModule],
   templateUrl: './expenses-home.component.html',
   styleUrl: './expenses-home.component.scss'
 })

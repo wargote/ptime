@@ -19,11 +19,11 @@ import { DebtDto } from '../../services/debt-api.service';
   standalone: true,
   imports: [
     CommonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
     MatButtonModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
     MatChipsModule,
     MatInputModule,
     MatCardModule
@@ -31,7 +31,7 @@ import { DebtDto } from '../../services/debt-api.service';
   templateUrl: './debt-table.component.html',
   styleUrl: './debt-table.component.scss'
 })
-export class DebtTableComponent {
+export class DebtTableComponent implements OnChanges {
   @Input() debts: DebtDto[] = [];
   @Output() edit   = new EventEmitter<DebtDto>();
   @Output() remove = new EventEmitter<string>();

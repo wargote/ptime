@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule }   from '@angular/material/card';
 
 import { UserProfileApiService, UserProfileDto } from '../services/user-profile-api.service';
 import { ProfileTableComponent } from '../components/profile-table/profile-table.component';
@@ -12,7 +13,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-profile-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, ProfileTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, ProfileTableComponent, MatCardModule],
   templateUrl: './profile-home.component.html',
   styleUrl: './profile-home.component.scss'
 })

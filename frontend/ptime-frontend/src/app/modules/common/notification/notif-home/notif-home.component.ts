@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatCardModule } from '@angular/material/card';  
 import { NotificationApiService, NotificationDto } from '../services/notification-api.service';
 import { NotifTableComponent } from '../components/notif-table/notif-table.component';
 import { NotifDialogComponent, NotifDialogData } from '../components/notif-dialog/notif-dialog.component';
@@ -12,7 +12,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '../../../../shared/di
 @Component({
   selector: 'pt-notif-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, NotifTableComponent],
+  imports: [CommonModule, MatIconModule, MatButtonModule, NotifTableComponent, MatCardModule],
   templateUrl: './notif-home.component.html',
   styleUrl: './notif-home.component.scss'
 })

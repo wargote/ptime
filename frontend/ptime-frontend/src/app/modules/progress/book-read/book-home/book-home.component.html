@@ -1,14 +1,20 @@
-<h2>Libros leídos</h2>
+<mat-card class="mat-elevation-z3 book-card">   <!-- MatCardModule aquí -->
 
-<button mat-fab color="primary" (click)="add()">
-  <mat-icon>add</mat-icon>
-</button>
+  <header class="card-header">
+    <h2>Libros leídos</h2>
 
-<pt-book-table
-  [books]="books"
-  (edit)="edit($event)"
-  (remove)="remove($event)"
-></pt-book-table>
+    <button mat-raised-button color="accent"
+            class="add-btn"
+            (click)="add()">
+      <mat-icon fontIcon="add" class="mr-1"></mat-icon>
+      Nuevo
+    </button>
+  </header>
 
-<div *ngIf="loading">Cargando…</div>
-<p *ngIf="!loading && !books.length">Sin registros.</p>
+  <pt-book-table
+    [books]="books"
+    (edit)="edit($event)"
+    (remove)="remove($event)">
+  </pt-book-table>
+
+</mat-card>

@@ -1,0 +1,26 @@
+.table-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: .75rem;
+}
+
+th.mat-header-cell {
+  background: #eee;
+  font-weight: 600;
+  border-bottom: 2px solid #ccc;
+}
+
+td.mat-cell {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+tr.mat-row:nth-child(even) td.mat-cell {
+  background: #fafafa;
+}
+
+.truncate {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
