@@ -9,6 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router'; 
 import { MatMenuModule } from '@angular/material/menu';
 import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth.service'; // ruta de tu servicio real
 
 @Component({
@@ -31,14 +32,16 @@ export class NavBarComponent {
   @ViewChild('drawer') drawer!: MatSidenav;
 
   private auth = inject(AuthService);
+  private router = inject(Router);      // ← nuevo
 
   user = {
     imageUrl: localStorage.getItem('profileImageUrl')
               ?? 'https://ui-avatars.com/api/?name=User'
   };
 
-  logout() {
-    this.auth.logout();
+  logout(): void {
+    this.auth.logout();                  
+    this.router.navigate(['/login']);    
   }
 
 }

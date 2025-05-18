@@ -1,28 +1,37 @@
-<section class="login-card">
-    <h1>PTime – Iniciar Sesión</h1>
-  
+<div class="login-wrapper">
+  <mat-card class="login-card" appearance="outlined">
+    <h1 mat-card-title>PTime</h1>
+    <p class="subtitle">Sign in to continue</p>
+
     <form [formGroup]="form" (ngSubmit)="submit()">
-      <label>
-        Correo electrónico
-        <input type="email" formControlName="email" />
-      </label>
-      <div class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
-        Ingresa un correo válido
-      </div>
-  
-      <label>
-        Contraseña
-        <input type="password" formControlName="password" />
-      </label>
-      <div class="error" *ngIf="form.controls.password.touched && form.controls.password.invalid">
-        Mínimo 6 caracteres
-      </div>
-  
-      <button type="submit" [disabled]="loading || form.invalid">
-        {{ loading ? 'Ingresando…' : 'Entrar' }}
+      <mat-form-field appearance="fill">
+        <mat-label>Email address</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error *ngIf="form.controls.email.touched && form.controls.email.invalid">
+          Please enter a valid email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+        <button mat-icon-button type="button" matSuffix (click)="hide = !hide">
+          <mat-icon class="toggle-eye">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.controls.password.touched && form.controls.password.invalid">
+          Minimum 6 characters
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button
+              color="primary"
+              class="login-btn"
+              type="submit"
+              [disabled]="loading || form.invalid">
+        {{ loading ? 'Signing in…' : 'Log in' }}
       </button>
-  
-      <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+      <p class="error-msg" *ngIf="errorMsg">{{ errorMsg }}</p>
     </form>
-  </section>
-  
+  </mat-card>
+</div>
