@@ -1,8 +1,11 @@
 <mat-sidenav-container class="h-screen">
 
-  <mat-sidenav #drawer mode="side" class="w-64" [fixedInViewport]="true">
-    <pt-nav-sidenav (close)="drawer.close()"></pt-nav-sidenav>
-  </mat-sidenav>
+<mat-sidenav #drawer
+             mode="side"
+             class="app-sidenav"         
+             [fixedInViewport]="true">
+  <pt-nav-sidenav (close)="drawer.close()"></pt-nav-sidenav>
+</mat-sidenav>
 
   <mat-sidenav-content>
 
@@ -14,23 +17,7 @@
     
       <span class="ml-2 font-semibold">PTime</span>
     
-      <span class="spacer"></span>        <!-- 👈 nuevo -->
-    
-      <button mat-icon-button [matMenuTriggerFor]="userMenu">
-        <img class="avatar" [src]="user.imageUrl" alt="avatar" />
-      </button>
-    
-      <mat-menu #userMenu="matMenu">
-        <button mat-menu-item routerLink="/profiles">
-          <mat-icon>person</mat-icon>
-          <span>Perfil</span>
-        </button>
-        <button mat-menu-item (click)="logout()">
-          <mat-icon>logout</mat-icon>
-          <span>Cerrar sesión</span>
-        </button>
-      </mat-menu>
-    
+      <span class="spacer"></span>       
     </mat-toolbar>    
 
     <router-outlet></router-outlet>

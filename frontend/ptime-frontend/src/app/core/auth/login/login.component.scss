@@ -1,0 +1,116 @@
+/* ----------  Theme helpers ---------- */
+@use '@angular/material' as mat;
+
+/* Primary palette = your navbar colour (#673ab7) */
+$primary: mat.define-palette(mat.$deep-purple-palette, 500, 300, 700);
+$accent : mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$warn   : mat.define-palette(mat.$red-palette);
+
+:host ::ng-deep
+.mat-mdc-form-field.mat-form-field-appearance-fill
+.mat-mdc-text-field-wrapper {
+  /* Color base del “relleno” */
+  --mdc-filled-text-field-container-color: transparent;
+
+  /* Capa gris que aparece al pasar el mouse */
+  --mdc-filled-text-field-hover-state-layer-color: transparent;
+  --mdc-filled-text-field-hover-state-layer-opacity: 0;
+
+  /* Capa gris que aparece al enfocar */
+  --mdc-filled-text-field-focus-state-layer-color: transparent;
+  --mdc-filled-text-field-focus-state-layer-opacity: 0;
+
+  /* (opcional) color de la línea activa/focus */
+  --mdc-filled-text-field-active-indicator-color: #673ab7; /* tu púrpura */
+}
+$theme: mat.define-light-theme((
+  color: ( primary: $primary, accent: $accent, warn: $warn )
+));
+
+/* ----------  Viewport background ---------- */
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  background: #fafafa;                   /* almost-white canvas */
+}
+
+/* ----------  Card ---------- */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 3rem 3.25rem 2.5rem;
+  border-radius: 1.25rem;
+  background: #ffffff;                   /* pure white card */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+  text-align: center;
+  color: #212121;
+
+  h1 {
+    margin-bottom: .25rem;
+    font-weight: 700;
+    letter-spacing: .4px;
+    color: mat.get-color-from-palette($primary);
+  }
+
+  .subtitle {
+    margin-bottom: 1.75rem;
+    font-size: .95rem;
+    color: #616161;
+  }
+}
+
+/* ----------  Form fields ---------- */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1.25rem;
+
+  .mat-mdc-text-field-wrapper {
+    background: white !important;
+    border-radius: .65rem;
+    background: #f5f5f5;                 /* light grey fill */
+  }
+}
+
+/* Primary focus overlay (matches #673ab7) */
+.mat-mdc-form-field-focus-overlay {
+  background: mat.get-color-from-palette($primary, 500, .10);
+}
+
+/* Floating-label & underline colour */
+.mat-mdc-form-field.mat-focused .mdc-floating-label,
+.mat-mdc-form-field.mat-focused .mdc-line-ripple::after {
+  color: mat.get-color-from-palette($primary);
+}
+
+/* ----------  Button ---------- */
+.login-btn {
+  width: 100%;
+  padding: .9rem 1rem;
+  border-radius: .65rem;
+  font-weight: 600;
+  letter-spacing: .4px;
+}
+
+/* Override Material flat-button colour to #673ab7 */
+.login-btn.mat-mdc-button-base.mat-primary {
+  --mdc-text-button-label-text-color: #{mat.get-color-from-palette($primary)};
+  background: mat.get-color-from-palette($primary);
+  color: #fff;
+}
+
+/* ----------  Error text ---------- */
+.error-msg {
+  margin-top: 1rem;
+  color: mat.get-color-from-palette($warn, 500);
+  font-weight: 600;
+}
+
+/* ----------  Password eye icon ---------- */
+mat-icon.toggle-eye {
+  cursor: pointer;
+  opacity: .7;
+  transition: opacity .15s;
+  &:hover { opacity: 1; }
+}

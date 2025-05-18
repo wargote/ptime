@@ -1,8 +1,9 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, inject  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../../../core/auth/auth.service'; 
 
 interface NavItem {
   icon: string;
@@ -20,7 +21,18 @@ interface NavItem {
 })
 export class NavSidenavComponent {
   @Output() close = new EventEmitter<void>();
+  
+  readonly primary = '#673ab7';
+  private auth   = inject(AuthService);
+  private router = inject(Router);
 
+  user = this.auth.currentUser ?? {
+    name: 'User',
+    email: '',
+    sub: ''
+  };
+  avatarUrl = 'https://ui-avatars.com/api/?name=User'
+  
   links: NavItem[] = [
     { icon: 'dashboard', label: 'Dashboard', path: '/dashboard' },
 
@@ -53,15 +65,25 @@ export class NavSidenavComponent {
     { icon: 'person', label: 'Profiles', path: '/profiles' }
   ];
 
-  opened = new Set<NavItem>();   
+  private opened = new Set<NavItem>();
 
-  toggle(item: NavItem) {
-    if (this.opened.has(item)) this.opened.delete(item);
-    else                       this.opened.add(item);
+  toggle(item: NavItem): void {
+    this.opened.has(item) ? this.opened.delete(item)
+                          : this.opened.add(item);
   }
 
-  isOpen(item: NavItem) {
-    return this.opened.has(item);
+  isOpen(item: NavItem): boolean {
+    if (this.opened.has(item)) return true;
+
+    return item.children?.some(c =>
+      c.path && this.router.url.startsWith(c.path)
+    ) ?? false;
+  }
+
+  logout(): void {
+    this.auth.logout();           
+    this.close.emit();            
+    this.router.navigate(['/login']);
   }
 
 }

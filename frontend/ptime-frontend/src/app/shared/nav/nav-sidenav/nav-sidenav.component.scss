@@ -1,16 +1,110 @@
-mat-nav-list {
-    width: 100%;
-    .mat-list-item {
-      font-weight: 500;
-    }
+@use '@angular/material' as mat;
+
+$primary-color : #673ab7;   /* ya lo tenemos */
+$bg-strip      : $primary-color;   /* <─ antes era #ffeb3b */
+$text-strip    : #ffffff;          /* texto blanco para contraste */
+$text-muted   : #616161;
+
+/* ----- header strip --------------------------------------------------- */
+.sidenav-header {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  background: $bg-strip;
+  border-bottom: 1px solid #e0e0e0;
+  color: $text-strip;
+  height: var(--mat-toolbar-standard-height);
+
+  .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
-mat-list-item {
-    cursor: pointer;
+  .user {
+    display: flex; flex-direction: column;
+    line-height: 1.2;
+
+    .name   { font-weight: 600; }
+    .logout {
+      margin-top: .15rem;
+      font-size: .78rem;
+      color: $text-strip;
+      text-decoration: none;
+      cursor: pointer;
+
+      mat-icon { font-size: 16px; vertical-align: middle; margin-right: 4px; }
+      &:hover  { opacity: .7; }
+    }
   }
-  
-.mat-nav-list .mat-list-item {
-    font-weight: 500;
+}
+
+/* ----- list ----------------------------------------------------------- */
+.sidenav-list {
+  padding: .25rem 0;
+  overflow-y: auto;
+  height: calc(100% - 80px); /* header = ±80px */
+  background: #fff;
+}
+
+mat-list-item, a.mat-list-item {
+  --h: 42px;
+  height: var(--h);
+  font-size: .95rem;
+  font-weight: 500;
+  color: $text-strip;
+  padding: 0 1.25rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  .bullet {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: .9rem;
+    transition: background .2s;
   }
-  
-.pl-6 { padding-left: 1.5rem; }   
+
+  .label   { flex: 1; }
+
+  .arrow   {
+    font-size: 20px;
+    color: $text-muted;
+    transition: transform .2s;
+  }
+
+  &.open .arrow { transform: rotate(180deg); }
+
+  &:hover {
+    background: #f6f6f6;
+  }
+
+  &.active {
+    .bullet { background: $primary-color; }
+    color: $primary-color;
+  }
+}
+
+/* sub-menú indent */
+.sublist {
+  padding-left: 1.25rem;
+
+  a.mat-list-item {
+    font-weight: 400;
+    height: 38px;
+  }
+}
+
+/* simple slide-down animation */
+@keyframes grow { from { max-height: 0; opacity: 0; } to { max-height: 600px; opacity: 1; } }
+::ng-deep .sublist[ng-reflect-ng-if="true"] { animation: grow .25s ease-out; }
+
+/* mobile: auto-collapse sidenav */
+@media (max-width: 599px) {
+  .sidenav-header { border-top-right-radius: 0; }
+}
+
+mat-list-item.mat-mdc-list-item.mdc-list-item.parent.mat-mdc-list-item-interactive.mat-mdc-list-item-single-line.mdc-list-item--with-one-line {
+    padding: 0%;
+}

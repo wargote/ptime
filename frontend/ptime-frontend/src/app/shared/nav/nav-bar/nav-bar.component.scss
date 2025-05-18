@@ -9,7 +9,7 @@ mat-toolbar {
   
 
   .spacer {
-    flex: 1 1 auto;     // ocupa todo el espacio restante
+    flex: 1 1 auto;     
   }
   
   .avatar {
@@ -19,3 +19,25 @@ mat-toolbar {
     object-fit: cover;
   }
   
+  .app-sidenav {
+  width: 260px !important;     
+}
+
+/* styles.scss  (o en nav-bar.component.scss usando :host ::ng-deep) */
+.app-sidenav .mat-drawer-inner-container {
+  overflow-y: auto;           /* mantiene el desplazamiento */
+  scrollbar-width: none;      /* Firefox */
+
+  /* Chrome / Edge / Safari */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+:host ::ng-deep .app-sidenav .mat-drawer-inner-container {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+:host ::ng-deep .app-sidenav .mat-drawer-inner-container::-webkit-scrollbar {
+  display: none;
+}
